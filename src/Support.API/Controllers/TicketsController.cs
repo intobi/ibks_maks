@@ -28,4 +28,14 @@ public class TicketsController(IMediator mediator) : ControllerBase
 
         return ResponseHelper.HandleResponse(ticket);
     }
+    [HttpPost]
+    public async Task<IActionResult> CreateTicket([FromBody] AddTicketRequest ticket)
+    {
+        var command = new CreateTicketCommand(ticket);
+        
+        var createdTicket = await mediator.Send(command);
+
+        return ResponseHelper.HandleResponse(createdTicket);
+    }
+    [HttpPut]
 }

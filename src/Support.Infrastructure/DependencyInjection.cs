@@ -16,6 +16,11 @@ public static class DependencyInjection
             (options => options.UseSqlServer(configuration.GetConnectionString("SupportDb")));
         
         services.AddTransient<IRepositoryBase<Ticket>, TicketsRepository>();
+        services.AddTransient<IRepositoryBase<InstalledEnvironment>, InstalledEnvironmentRepository>();
+        services.AddTransient<IRepositoryBase<Priority>, PrioritiesRepository>();
+        services.AddTransient<IRepositoryBase<Status>, StatusesRepository>();
+        services.AddTransient<IRepositoryBase<TicketType>, TicketTypesRepository>();
+        services.AddTransient<IRepositoryBase<User>, UsersRepository>();
         
         return services;
     }
