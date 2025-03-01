@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Replies\Commands\" />
       <Folder Include="Tickets\Commands\" />
     </ItemGroup>
 

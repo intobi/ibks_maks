@@ -38,6 +38,16 @@ public class RepliesController(IMediator mediator) : ControllerBase
     //
     //     return ResponseHelper.HandleResponse(createdReply);
     // }
+    [HttpGet("{replyId:int}")]
+    public async Task<IActionResult> GetAllReplies(int replyId)
+    {
+        var query = new GetReplyByIdQuery(replyId);
+    
+        var reply = await mediator.Send(query);
+    
+        return ResponseHelper.HandleResponse(reply);
+    }
+    
     // [HttpPut]
     // public async Task<IActionResult> UpdateReply([FromBody] UpdateReplyRequest reply)
     // {
