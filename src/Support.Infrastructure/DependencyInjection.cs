@@ -21,6 +21,7 @@ public static class DependencyInjection
         services.AddTransient<IRepositoryBase<Status>, StatusesRepository>();
         services.AddTransient<IRepositoryBase<TicketType>, TicketTypesRepository>();
         services.AddTransient<IRepositoryBase<User>, UsersRepository>();
+        services.AddTransient<IRepositoryBase<TicketReply>, RepliesRepository>();
         
         return services;
     }
