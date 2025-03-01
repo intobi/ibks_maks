@@ -9,7 +9,7 @@
 
     public abstract record InternalError(ErrorReason Reason, string Message);
 
-    public record NotFoundError(string Id) : InternalError(ErrorReason.NotFound, $"Entity with ID {Id} not found.");
+    public record NotFoundError(long Id) : InternalError(ErrorReason.NotFound, $"Entity with ID {Id} not found.");
 
     public record NotTicketsFoundError(IEnumerable<string> Errors) : InternalError(ErrorReason.NotTicketsFoundError, $"Tickets errors occured.")
     {

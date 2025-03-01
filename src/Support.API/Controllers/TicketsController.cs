@@ -18,4 +18,14 @@ public class TicketsController(IMediator mediator) : ControllerBase
 
         return ResponseHelper.HandleResponse(tickets);
     }
+    
+    [HttpGet("{ticketId:long}")]
+    public async Task<IActionResult> GetAllTickets(long ticketId)
+    {
+        var query = new GetTicketByIdQuery(ticketId);
+
+        var ticket = await mediator.Send(query);
+
+        return ResponseHelper.HandleResponse(ticket);
+    }
 }
