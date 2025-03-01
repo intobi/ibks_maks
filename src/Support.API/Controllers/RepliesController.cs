@@ -41,13 +41,13 @@ public class RepliesController(IMediator mediator) : ControllerBase
         return ResponseHelper.HandleResponse(createdReply);
     }
     
-    // [HttpPut]
-    // public async Task<IActionResult> UpdateReply([FromBody] UpdateReplyRequest reply)
-    // {
-    //     var command = new UpdateReplyCommand(reply);
-    //     
-    //     var updatedReply = await mediator.Send(command);
-    //
-    //     return ResponseHelper.HandleResponse(updatedReply;
-    // }
+    [HttpPut]
+    public async Task<IActionResult> UpdateReply([FromBody] UpdateReplyRequest reply)
+    {
+        var command = new UpdateReplyCommand(reply);
+        
+        var updatedReply = await mediator.Send(command);
+    
+        return ResponseHelper.HandleResponse(updatedReply);
+    }
 }
