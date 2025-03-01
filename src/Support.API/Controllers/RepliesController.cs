@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Support.API.Helpers;
+using Support.Application.Common.Models.Replies;
+using Support.Application.Replies.Commands;
 using Support.Application.Replies.Queries;
 
 namespace Support.API.Controllers;
@@ -19,25 +21,6 @@ public class RepliesController(IMediator mediator) : ControllerBase
         return ResponseHelper.HandleResponse(replies);
     }
     
-    // [HttpGet("{replyId:long}")]
-    // public async Task<IActionResult> GetAllReplies(long replyId)
-    // {
-    //     var query = new GetReplyByIdQuery(replyId);
-    //
-    //     var reply = await mediator.Send(query);
-    //
-    //     return ResponseHelper.HandleResponse(reply);
-    // }
-    //
-    // [HttpPost]
-    // public async Task<IActionResult> CreateReply([FromBody] AddReplyRequest reply)
-    // {
-    //     var command = new CreateReplyCommand(reply);
-    //     
-    //     var createdReply = await mediator.Send(command);
-    //
-    //     return ResponseHelper.HandleResponse(createdReply);
-    // }
     [HttpGet("{replyId:int}")]
     public async Task<IActionResult> GetAllReplies(int replyId)
     {
@@ -46,6 +29,16 @@ public class RepliesController(IMediator mediator) : ControllerBase
         var reply = await mediator.Send(query);
     
         return ResponseHelper.HandleResponse(reply);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateReply([FromBody] AddReplyRequest reply)
+    {
+        var command = new CreateReplyCommand(reply);
+        
+        var createdReply = await mediator.Send(command);
+    
+        return ResponseHelper.HandleResponse(createdReply);
     }
     
     // [HttpPut]

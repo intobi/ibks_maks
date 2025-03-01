@@ -13,5 +13,11 @@ public class ReplyProfile : Profile
             .ForMember(x => x.TicketId, opt => opt.MapFrom(q => q.TId))
             .ForMember(x => x.Reply, opt => opt.MapFrom(q => q.Reply))
             .ForMember(x => x.ReplyDate, opt => opt.MapFrom(q => q.ReplyDate));
+        
+        CreateMap<AddReplyRequest, TicketReply>()
+            .ForMember(x => x.TId, opt => opt.MapFrom(q => q.TicketId))
+            .ForMember(x => x.Reply, opt => opt.MapFrom(q => q.Reply))
+            .ForMember(x => x.ReplyDate, opt => opt.MapFrom(q => q.ReplyDate));
+
     }
 }
