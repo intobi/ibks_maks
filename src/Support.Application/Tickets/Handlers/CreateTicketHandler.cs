@@ -28,8 +28,8 @@ public class CreateTicketHandler(
         request.TicketRequest.UserOID = users.FirstOrDefault()?.OID;
         request.TicketRequest.CreatedByOID = users.FirstOrDefault()?.OID;
         
-        var setup = await installedEnvironmentRepository.FindByIdAsync(request.TicketRequest.InstalledEnvironmentId);
-        if (setup is null)
+        var installedEnvironment = await installedEnvironmentRepository.FindByIdAsync(request.TicketRequest.InstalledEnvironmentId);
+        if (installedEnvironment is null)
             return new Result<InternalError, TicketResponse>(new NotFoundError(request.TicketRequest.InstalledEnvironmentId));
         
         var status = await statusesRepository.FindByIdAsync(request.TicketRequest.StatusId);
