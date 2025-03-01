@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace Support.Domain.Entities;
 
-public partial class Ticket
+public class Ticket
 {
     public long Id { get; set; }
-
     public string? Title { get; set; }
 
     public int ApplicationId { get; set; }
@@ -45,6 +44,7 @@ public partial class Ticket
 
     public string? CreatedByOID { get; set; }
 
+    // Navigation
     public virtual InstalledEnvironment InstalledEnvironment { get; set; } = null!;
 
     public virtual Priority Priority { get; set; } = null!;
