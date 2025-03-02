@@ -12,7 +12,7 @@ public class GetAllTicketsHandler(IRepositoryBase<Ticket> repository, IMapper ma
 {
     public async Task<Result<InternalError, List<TicketResponse>>> Handle(GetAllTicketsQuery request, CancellationToken cancellationToken)
     {
-        var tickets = await repository.GetAllAsync();
+        var tickets = await repository.GetAllAsync(request.Page, request.PageSize);
 
         return mapper.Map<List<TicketResponse>>(tickets);
     }

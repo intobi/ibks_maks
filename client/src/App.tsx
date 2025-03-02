@@ -6,7 +6,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <TicketList />
+      <div className="container mt-4 mb-5">
+        <div className="d-flex justify-content-center">
+          <TicketList />
+        </div>
+      </div>
     </QueryClientProvider>
   );
 }
