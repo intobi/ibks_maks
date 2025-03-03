@@ -46,14 +46,6 @@ public class CreateTicketHandler(
         
         request.TicketRequest.Date ??= DateTime.Now;
         request.TicketRequest.LastModified ??= DateTime.Now;
-        
-        // var validationResult = await validator.ValidateAsync(request, cancellationToken);
-        //
-        // if (!validationResult.IsValid)
-        // {
-        //     var validationError = new ValidationError(validationResult.Errors.Select(e => e.ErrorMessage));
-        //     return new Result<InternalError, TicketResponse>(validationError);
-        // }
 
         var ticket = mapper.Map<Ticket>(request.TicketRequest);
 
