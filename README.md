@@ -8,4 +8,4 @@ A simple ticket tracking system application
 
 **Client:** React, Redux
 
-**Server:** ASP.NET Core Web API, EF Core, MS SQL
+**Server:** ASP.NET Core Web API, EF Core, MS SQL, using MediatR and CQRS
