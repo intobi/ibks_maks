@@ -12,9 +12,9 @@ namespace Support.API.Controllers;
 public class TicketsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAllTickets()
+    public async Task<IActionResult> GetAllTickets([FromQuery] int page, int pageSize)
     {
-        var query = new GetAllTicketsQuery();
+        var query = new GetAllTicketsQuery(page, pageSize);
 
         var tickets = await mediator.Send(query);
 
@@ -22,7 +22,7 @@ public class TicketsController(IMediator mediator) : ControllerBase
     }
     
     [HttpGet("{ticketId:long}")]
-    public async Task<IActionResult> GetAllTickets(long ticketId)
+    public async Task<IActionResult> GetTicketById(long ticketId)
     {
         var query = new GetTicketByIdQuery(ticketId);
 

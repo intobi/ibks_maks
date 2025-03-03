@@ -12,9 +12,9 @@ namespace Support.API.Controllers;
 public class RepliesController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetAllReplies()
+    public async Task<IActionResult> GetAllReplies([FromQuery] int page, int pageSize, string ticketId)
     {
-        var query = new GetAllRepliesQuery();
+        var query = new GetAllRepliesQuery(page, pageSize, ticketId);
 
         var replies = await mediator.Send(query);
 
@@ -22,7 +22,7 @@ public class RepliesController(IMediator mediator) : ControllerBase
     }
     
     [HttpGet("{replyId:int}")]
-    public async Task<IActionResult> GetAllReplies(int replyId)
+    public async Task<IActionResult> GetReplyById(int replyId)
     {
         var query = new GetReplyByIdQuery(replyId);
     
