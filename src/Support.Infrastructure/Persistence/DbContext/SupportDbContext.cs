@@ -144,9 +144,5 @@ public class SupportDbContext : Microsoft.EntityFrameworkCore.DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
         });
-
-        //OnModelCreatingPartial(modelBuilder);
     }
-
-    //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
