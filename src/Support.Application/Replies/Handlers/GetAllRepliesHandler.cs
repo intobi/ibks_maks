@@ -12,7 +12,7 @@ public class GetAllRepliesHandler(IRepositoryBase<TicketReply> repository, IMapp
 {
     public async Task<Result<InternalError, List<ReplyResponse>>> Handle(GetAllRepliesQuery request, CancellationToken cancellationToken)
     {
-        var replies = await repository.GetAllAsync(request.Page, request.PageSize);
+        var replies = await repository.GetAllAsync(request.Page, request.PageSize, [request.TicketId]);
 
         return mapper.Map<List<ReplyResponse>>(replies);
     }

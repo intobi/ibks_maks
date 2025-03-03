@@ -10,7 +10,7 @@ public abstract class RepositoryBase<TEntity>(SupportDbContext context) : IRepos
     protected SupportDbContext Context { get; private set; } = context;
     protected DbSet<TEntity> DbSet { get; private set; } = context.Set<TEntity>();
 
-    public virtual async Task<List<TEntity>> GetAllAsync(int page, int pageSize)
+    public virtual async Task<List<TEntity>> GetAllAsync(int page, int pageSize, params string[] additional)
     {
         return await DbSet
             .Skip((page - 1) * pageSize)
